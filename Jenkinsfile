@@ -19,10 +19,10 @@ pipeline {
 
     stage('Test') {
       steps {
-        withDocker {
-          image 'node:latest'
-          step {
         withDocker(container('node:latest')) {
           sh 'npm test'
         }
+      }
+    }
+  }
 }
