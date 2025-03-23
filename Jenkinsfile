@@ -11,11 +11,8 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        withDocker {
-          image 'node:latest'
-          step {
-            sh 'npm install'
-          }
+        withDocker(container('node:latest')) {
+          sh 'npm install'
         }
       }
     }
@@ -25,10 +22,7 @@ pipeline {
         withDocker {
           image 'node:latest'
           step {
-            sh 'npm test'
-          }
+        withDocker(container('node:latest')) {
+          sh 'npm test'
         }
-      }
-    }
-  }
 }
