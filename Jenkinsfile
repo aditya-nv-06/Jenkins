@@ -1,22 +1,35 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:14'
-        }
+  agent any
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', // Replace with the branch you want to checkout
+          credentialsId: 'your-credentials-id', // Replace with the credentials ID
+          url: 'https://github.com/aditya-nv-06/Jenkins' // Replace with the repository URL
+      }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/aditya-nv-06/Jenkins'
-            }
+    stage('Install Dependencies') {
+      steps {
+        withDocker {
+          image 'node:latest'
+          step {
+            sh 'npm install'
+          }
         }
-
-        stage('Test') {
-            steps {
-                sh 'npm install'
-                sh 'npm test'
-            }
-        }
+      }
     }
+
+    stage('Test') {
+      steps {
+        withDocker {
+          image 'node:latest'
+          step {
+            sh 'npm test'
+          }
+        }
+      }
+    }
+  }
 }
