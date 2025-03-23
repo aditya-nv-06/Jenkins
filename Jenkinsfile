@@ -5,7 +5,6 @@ pipeline {
     stage('Checkout') {
       steps {
         git branch: 'main', // Replace with the branch you want to checkout
-          credentialsId: 'your-credentials-id', // Replace with the credentials ID
           url: 'https://github.com/aditya-nv-06/Jenkins' // Replace with the repository URL
       }
     }
