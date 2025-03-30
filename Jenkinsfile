@@ -1,28 +1,37 @@
 pipeline {
   agent any
-
+  tools{
+    nodejs 'Nodejs'
+  }
   stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'main', // Replace with the branch you want to checkout
-          url: 'https://github.com/aditya-nv-06/Jenkins' // Replace with the repository URL
+     stage('Checkout the code'){
+      steps{ 
+        git url:'https://github.com/aditya-nv-06/Jenkins', branch: 'main'
       }
-    }
+     }
 
-    stage('Install Dependencies') {
-      steps {
-        withDocker(container('node:latest')) {
-          sh 'npm install'
+      stage('Install dependencies') {
+        steps {
+            sh 'npm install'
         }
       }
-    }
 
-    stage('Test') {
-      steps {
-        withDocker(container('node:latest')) {
-          sh 'npm test'
+      stage('Run tests'){
+        steps {
+            sh 'npm test'
         }
       }
-    }
+
+      stage('Build the docker image'){
+        steps {
+            sh 'docker build -t ironcrush2006/jenkins-nodejs-app .'
+        }
+      }
+
+      stage('Push the docker image'){
+        steps {
+            sh 'docker push ironcrush2006/jenkins-nodejs-app'
+        }
+      }
   }
 }
