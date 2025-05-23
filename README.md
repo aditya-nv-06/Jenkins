@@ -1,4 +1,3 @@
-# Jenkins
 ---
 
 # Jenkins GitHub Integration Demo
