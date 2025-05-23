@@ -1,7 +1,4 @@
 # Jenkins
-
-Absolutely! Based on your [GitHub repository](https://github.com/aditya-nv-06/Jenkins), here’s a tailored README draft that describes your project, its purpose, usage, and how to get started:
-
 ---
 
 # Jenkins GitHub Integration Demo
@@ -81,8 +78,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 **Maintained by [Aditya N V](https://github.com/aditya-nv-06)**
 
 ---
-
-Feel free to modify or expand this README as your project evolves! If you’d like to include pipeline examples or screenshots, just let me know.
-
----
-Answer from Perplexity: pplx.ai/share
